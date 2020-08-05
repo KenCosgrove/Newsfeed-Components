@@ -10,7 +10,8 @@ let menuItems = [
 ];
 
 /* 
-  Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
+  Step 1: Write a component called 'menuMaker' to create a menu like the
+   markup below:
 
   <div class="menu">
     <ul>
@@ -31,3 +32,13 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+function menuMaker(arr) {
+  const menu = document.createElement("div");
+  const list = document.createElement("ul");
+  const item = document.createElement("li");
+
+  arr.forEach((item) => {
+    list.appendChild(item);
+  });
+}
