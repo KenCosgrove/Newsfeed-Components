@@ -89,6 +89,14 @@ const data = [
   },
 ];
 
+data.push({
+  title: "hello",
+  date: "9 5 88",
+  firstParagraph: "lorem",
+  secondParagraph: "hi",
+  thirdParagraph: "slaut",
+});
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
@@ -103,6 +111,8 @@ const data = [
     <span class="expandButton">+</span>
   </div>
 */
+const articles = document.querySelector(".articles");
+
 function articleMaker(articleObj) {
   const article = document.createElement("div");
   const articleTitle = document.createElement("h2");
@@ -113,7 +123,6 @@ function articleMaker(articleObj) {
   const button = document.createElement("span");
 
   article.appendChild(articleTitle);
-  article.appendChild(content);
   article.appendChild(date);
   article.appendChild(content1);
   article.appendChild(content2);
@@ -121,14 +130,15 @@ function articleMaker(articleObj) {
   article.appendChild(button);
 
   article.classList.add("article");
-  content.classList.add("date");
+  date.classList.add("date");
   button.classList.add("expandButton");
 
   articleTitle.textContent = articleObj.title;
   date.textContent = articleObj.date;
-  content1.textContent = artcielObj.firstParagraph;
-  content2.textContent = artcielObj.secondParagraph;
-  content3.textContent = artcielObj.thirdParagraph;
+  content1.textContent = articleObj.firstParagraph;
+  content2.textContent = articleObj.secondParagraph;
+  content3.textContent = articleObj.thirdParagraph;
+  button.textContent = "+";
 
   button.addEventListener("click", (event) => {
     article.classList.toggle("article-open");
@@ -137,8 +147,16 @@ function articleMaker(articleObj) {
 }
 
 data.forEach((articleObj) => {
-  const theArticle = artcielMaker(articleObj);
-  article.appendChild(theArticle);
+  const theArticle = articleMaker(articleObj);
+  articles.appendChild(theArticle);
+});
+
+data.push({
+  title: "hello",
+  date: "9 5 88",
+  firstParagraph: "lorem",
+  secondParagraph: "hi",
+  thirdParagraph: "slaut",
 });
 
 /*
@@ -150,6 +168,7 @@ data.forEach((articleObj) => {
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
-  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+  Step 5: Try adding new article object to the data array.
+   Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
